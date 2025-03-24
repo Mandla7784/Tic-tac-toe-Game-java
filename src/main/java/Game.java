@@ -1,3 +1,6 @@
+
+import java.util.Scanner;
+
 /**
  * Description: Implement a two-player tic-tac-toe
     game. Display the game board and prompt each
@@ -7,21 +10,39 @@
     multiple rounds if desired.
  */
 
+ // TODO:
+ /**
+  * Create a runnable Java class called TicTacToe .
+    Declare all the required variables.
+    Print a rudimentary tic-tac-toe board.
+    Obtain user input from the two players.
+    Check for a winning play.
+    Switch players if the game is not won.
+    End the game if all squares are taken.
+  */
 
 
 public class Game {
     public static void main(String[] args){
       String[] players = {"Player_1","Player_2"};
-      String[] gameBoard = {"_","|","_","|","_","|","_","|","_","|","_","|"};
+      Scanner scanner = new Scanner(System.in);
+      System.out.println("Enter number of rows");
+      int num_rows = scanner.nextInt();
+
+      String[][]  gameBoard = new String[num_rows][num_rows];
 
         
-      for(int i = 0 ; i < gameBoard.length ; i ++){
-        for(int j  = 0 ; j < gameBoard.length; j ++){
-                System.out.println(gameBoard[i]);
+      for(int i = 0 ; i < num_rows ; i ++){
+        for(int j  = 0 ; j < num_rows; j ++){
+              gameBoard[i][j] = "-";
         }
-        System.out.println();
       }
-
-
+    printBoard(gameBoard);
+    }
+    public static   void printBoard(String[][] board){
+        for(int i = 0 ; i < board.length ; i ++){
+            System.out.println(board[i]);
+        }
+   
     }
 }
