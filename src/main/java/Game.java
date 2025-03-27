@@ -45,9 +45,19 @@ public class Game {
         }
    
     }
-    static  void chekForWining(char[][] board , String player){
+    static  void chekForWining(char[][] board , char player){
+        
+        for(int row = 0 ;  row < board.length ; row ++){
+            if(board[row][0] == player && board[row][1] == player && board[row][2] == player){
+                System.out.println("The winner is \n " + player);
+                return;
+            }else if(board[row][0] == player && board[row][3] == player && board[row][6] == player){
+                // diagonal checking
+               System.out.println("The winner is \n " + player);
+            }
+        }
 
-
+        
     }
     static  char[][] promptUser(Scanner scanner){
       int num_rows = scanner.nextInt();
