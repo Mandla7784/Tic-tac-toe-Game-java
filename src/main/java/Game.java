@@ -46,16 +46,30 @@ public class Game {
    
     }
     static  void chekForWining(char[][] board , char player){
-        
+
         for(int row = 0 ;  row < board.length ; row ++){
             if(board[row][0] == player && board[row][1] == player && board[row][2] == player){
                 System.out.println("The winner is \n " + player);
                 return;
-            }else if(board[row][0] == player && board[row][3] == player && board[row][6] == player){
-                // diagonal checking
-               System.out.println("The winner is \n " + player);
+       
             }
         }
+        // Cols
+        for(int col = 0 ; col < board[0].length ; col ++){
+            if(board[0][col] == player && board[1][col] == player && board[2][col] == player){
+              System.out.println("The winner is \n " + player);
+            return;
+                  
+
+
+            }
+        }
+        // Diagonals
+        if(board[0][0] == player && board[1][1] == player && board[2][2] == player){
+                System.out.println("The winner is \n " + player);    
+            return;
+        }
+
 
         
     }
