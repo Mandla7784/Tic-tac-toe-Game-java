@@ -23,24 +23,14 @@ import java.util.Scanner;
 
 
 public class Game {
+
     public static void main(String[] args){
       String[] players = {"Player_1","Player_2"};
-      Scanner scanner = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
       System.out.println("Enter number of rows");
-      int num_rows = scanner.nextInt();
+    printBoard(promptUser(scanner));
 
-      char[][]  gameBoard = new char[num_rows][num_rows];
 
-        
-      for(int i = 0 ; i < num_rows ; i ++){
-        for(int j  = 0 ; j < num_rows; j ++){
-              gameBoard[i][j] = ' ';
-        }
-
-      }
-    printBoard(gameBoard);
-
-    
     }
     public static   void printBoard(char[][] board){
         for(int i = 0 ; i < board.length ; i ++){
@@ -53,4 +43,22 @@ public class Game {
     static  void chekForWining(){
 
     }
+    static  char[][] promptUser(Scanner scanner){
+      
+      int num_rows = scanner.nextInt();
+
+      
+      char[][]  gameBoard = new char[num_rows][num_rows];
+
+        
+      for(int i = 0 ; i < num_rows ; i ++){
+        for(int j  = 0 ; j < num_rows; j ++){
+              gameBoard[i][j] = ' ';
+        }
+
+      }
+      return gameBoard;
+
+    }
+
 }
