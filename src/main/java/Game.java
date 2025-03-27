@@ -29,68 +29,74 @@ public class Game {
       String[] players = {"Player_X","Player_O"};
       Random number = new Random();
       int gameTimer = 10;
+
    
+    
 
-       int  currentPlayerIdx = number.nextInt(2);
-      String currentPlayer = players[currentPlayerIdx].split("_")[1];        
-      System.out.println(currentPlayer);
-      Scanner scanner = new Scanner(System.in);
-
-
+        int  currentPlayerIdx = number.nextInt(2);
+        String currentPlayer = players[currentPlayerIdx].split("_")[1];      
+        System.out.println(currentPlayer + "CUU");
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number of rows");
+        printBoard(promptUser(scanner));
+        System.out.println("THE Current player is " + currentPlayer);
+        System.out.println();
 
-            printBoard(promptUser(scanner));
-      }
-      
-    
+        System.out.println("Enter your moves symbol: "  + currentPlayer + "   and index");
+        char playerMove =  scanner.next().charAt(0);
 
-    public static   void printBoard(char[][] board){
-        for(int i = 0 ; i < board.length ; i ++){
-            System.out.println(" " + board[i][0] + "|" + board[i][1] + "|" + board[i][2] );
-             if(i < 2) System.out.println("----+---+---");
-          
-        }
-   
-    }
-    static  void chekForWiningAndTie(char[][] board , char player , char nextPlayer){
-        for(int row = 0 ;  row < board.length ; row ++){
-            if(board[row][0] == player && board[row][1] == player && board[row][2] == player){
-                System.out.println("The winner is \n " + player);
-               
-            }else if(board[row][0] == player && board[row][1] == nextPlayer && board[row][2] == player){
-                System.out.println("Its a tie");
-
-            }
-        }
-        // Cols
-        for(int col = 0 ; col < board[0].length ; col ++){
-            if(board[0][col] == player && board[1][col] == player && board[2][col] == player){
-              System.out.println("The winner is \n " + player);
-            return;
-    
-            }else if(board[0][col] == player && board[1][col] == nextPlayer && board[2][col] == player){
-                     System.out.println("Its a tie");
-            }
-        }
-        // Diagonals
-        if(board[0][0] == player && board[1][1] == player && board[2][2] == player){
-                System.out.println("The winner is \n " + player);    
+        System.out.println();
+        int row = scanner.nextInt();
+        int col =scanner.nextInt();
+       char [][] theGameBoard = promptUser(scanner);
+       theGameBoard[row][col] = playerMove;
          
-        }else if (board[0][0] == player && board[1][1] == nextPlayer && board[2][2] == player){
-                System.out.println("Its a tie");
-        }
-        
-    }
-    static  char[][] promptUser(Scanner scanner){
-      int num_rows = scanner.nextInt();
-      char[][]  gameBoard = new char[num_rows][num_rows];
-      for(int i = 0 ; i < num_rows ; i ++){
-        for(int j  = 0 ; j < num_rows; j ++){
-              gameBoard[i][j] = ' ';
-        }
       }
-      return gameBoard;
+    
+        public static   void printBoard(char[][] board){
+            for(int i = 0 ; i < board.length ; i ++){
+                System.out.println(" " + board[i][0] + "|" + board[i][1] + "|" + board[i][2] );
+                if(i < 2) System.out.println("----+---+---");
+            }
+        }
+        static  void chekForWiningAndTie(char[][] board , char player , char nextPlayer){
+            for(int row = 0 ;  row < board.length ; row ++){
+                if(board[row][0] == player && board[row][1] == player && board[row][2] == player){
+                    System.out.println("The winner is \n " + player);
+                
+                }else if(board[row][0] == player && board[row][1] == nextPlayer && board[row][2] == player){
+                    System.out.println("Its a tie");
+                }
+            }
+            // Cols
+            for(int col = 0 ; col < board[0].length ; col ++){
+                if(board[0][col] == player && board[1][col] == player && board[2][col] == player){
+                System.out.println("The winner is \n " + player);
+                return;
+        
+                }else if(board[0][col] == player && board[1][col] == nextPlayer && board[2][col] == player){
+                        System.out.println("Its a tie");
+                }
+            }
+            // Diagonals
+            if(board[0][0] == player && board[1][1] == player && board[2][2] == player){
+                    System.out.println("The winner is \n " + player);    
+            
+            }else if (board[0][0] == player && board[1][1] == nextPlayer && board[2][2] == player){
+                    System.out.println("Its a tie");
+            }
+            
+        }
+        static  char[][] promptUser(Scanner scanner){
+        int num_rows = scanner.nextInt();
+        char[][]  gameBoard = new char[num_rows][num_rows];
+        for(int i = 0 ; i < num_rows ; i ++){
+            for(int j  = 0 ; j < num_rows; j ++){
+                gameBoard[i][j] = ' ';
+            }
+        }
+        return gameBoard;
+
+        }
 
     }
-
-}
