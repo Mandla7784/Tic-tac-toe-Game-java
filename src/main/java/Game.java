@@ -29,20 +29,28 @@ public class Game {
       System.out.println("Enter number of rows");
       int num_rows = scanner.nextInt();
 
-      String[][]  gameBoard = new String[num_rows][num_rows];
+      char[][]  gameBoard = new char[num_rows][num_rows];
 
         
       for(int i = 0 ; i < num_rows ; i ++){
         for(int j  = 0 ; j < num_rows; j ++){
-              gameBoard[i][j] = "-";
+              gameBoard[i][j] = ' ';
         }
+
       }
     printBoard(gameBoard);
+
+    
     }
-    public static   void printBoard(String[][] board){
+    public static   void printBoard(char[][] board){
         for(int i = 0 ; i < board.length ; i ++){
-            System.out.println(board[i]);
+            System.out.println(" " + board[i][0] + "|" + board[i][1] + "|" + board[i][2] );
+             if(i < 2) System.out.println("----+---+---");
+          
         }
    
+    }
+    static  void chekForWining(){
+
     }
 }
