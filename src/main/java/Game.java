@@ -22,14 +22,16 @@ import java.util.Scanner;
     End the game if all squares are taken.
   */
 public class Game {
+    public static Random number = new Random();
+    private  static    String[] players = {"Player_X","Player_O"};
+     public static  int  currentPlayerIdx = number.nextInt(2);
+     private static  String currentPlayer = players[currentPlayerIdx].split("_")[1];
+     public static void main(String[] args){
 
-    public static void main(String[] args){
-      String[] players = {"Player_X","Player_O"};
-      Random number = new Random();
+
       int gameTimer = 10;
 
-        int  currentPlayerIdx = number.nextInt(2);
-        String currentPlayer = players[currentPlayerIdx].split("_")[1];      
+
         System.out.println(currentPlayer + "CUU");
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter number of rows");
@@ -46,6 +48,10 @@ public class Game {
        char [][] theGameBoard = promptUser(scanner);
        theGameBoard[row][col] = playerMove;
          
+      }
+      public  char getPlayer(){
+          return  (char)currentPlayer;
+
       }
     
         public static   void printBoard(char[][] board){
