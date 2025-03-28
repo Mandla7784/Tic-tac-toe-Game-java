@@ -49,10 +49,14 @@ public class Game {
       }
     
         public static   void printBoard(char[][] board){
+            setBoard(board);
+        }
+        public  static  void setBoard(char[][] board){
             for(int i = 0 ; i < board.length ; i ++){
                 System.out.println(" " + board[i][0] + "|" + board[i][1] + "|" + board[i][2] );
                 if(i < 2) System.out.println("----+---+---");
             }
+
         }
         static  void chekForWiningAndTie(char[][] board , char player , char nextPlayer){
             for(int row = 0 ;  row < board.length ; row ++){
