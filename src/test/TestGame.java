@@ -20,14 +20,14 @@ public class TestGame  {
         game.setBoard(board);
 
 
-        if(game.getPlayer().equals("X")){
+        if(game.getPlayer() == 'X'){
             nextPlayer = 'O';
 
         }else{
             nextPlayer = 'X';
 
         }
-        assertEquals('X', game.chekForWiningAndTie(board , game.getPlayer() ,nextPlayer ));
+        assertEquals('X', game.chekForWiningAndTie(board , game.getPlayer() , ''));
 
 
     }

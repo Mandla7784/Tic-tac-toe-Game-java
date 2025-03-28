@@ -50,7 +50,9 @@ public class Game {
          
       }
       public  char getPlayer(){
-          return  (char)currentPlayer;
+          if(this.currentPlayer.equals("X")) return  'O';
+          return  'X';
+
 
       }
     
@@ -90,7 +92,7 @@ public class Game {
             }else if (board[0][0] == player && board[1][1] == nextPlayer && board[2][2] == player){
                     System.out.println("Its a tie");
             }
-            
+
         }
         static  char[][] promptUser(Scanner scanner){
         int num_rows = scanner.nextInt();
