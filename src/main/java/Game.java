@@ -21,17 +21,12 @@ import java.util.Scanner;
     Switch players if the game is not won.
     End the game if all squares are taken.
   */
-
-
 public class Game {
 
     public static void main(String[] args){
       String[] players = {"Player_X","Player_O"};
       Random number = new Random();
       int gameTimer = 10;
-
-   
-    
 
         int  currentPlayerIdx = number.nextInt(2);
         String currentPlayer = players[currentPlayerIdx].split("_")[1];      
