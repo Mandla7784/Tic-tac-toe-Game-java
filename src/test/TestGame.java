@@ -1,13 +1,13 @@
 
 import org.junit.Test;
-import org.junit.jupiter.api.Test;
+//import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 
-
 public class TestGame  {
-    private  Game game = new Game();
+    private static    Game game = new Game();
     public static char nextPlayer;
+    public    char player = game.getPlayer();
 
 
     @Test
@@ -27,10 +27,12 @@ public class TestGame  {
             nextPlayer = 'X';
 
         }
-        assertEquals('X', game.chekForWiningAndTie(board , game.getPlayer() , ''));
+        char winner = game.chekForWiningAndTie(board , player ,nextPlayer);
+        assertEquals('X', winner);
 
 
     }
+    @Test
     public  void testHorizontalWinningO(){
         char[][] board = {
                 {'X','X','X'},
@@ -38,7 +40,18 @@ public class TestGame  {
                 {' ','O',' '}
         };
         game.setBoard(board);
-        assertEquals('O',game.chekForWiningAndTie(board,););
+
+
+        if(game.getPlayer() == 'X'){
+            nextPlayer = 'O';
+
+        }else{
+            nextPlayer = 'X';
+
+        }
+
+        char winner = game.chekForWiningAndTie(board , player ,nextPlayer);
+        assertEquals('O', winner);
 
     }
 }
