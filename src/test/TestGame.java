@@ -47,11 +47,32 @@ public class TestGame  {
 
         }else{
             nextPlayer = 'X';
-
         }
-
         char winner = game.chekForWiningAndTie(board , player ,nextPlayer);
         assertEquals('O', winner);
+
+    }
+
+    @Test
+    public  void testDiagonalX(){
+        char[][] board = {
+
+                {'X','O','X'},
+                {'O','X','O'},
+                {' ','O','X'}
+        };
+        game.setBoard(board);
+
+        if(game.getPlayer() == 'X'){
+            nextPlayer = 'O';
+
+        }else{
+            nextPlayer = 'X';
+
+        }
+        char winner = game.chekForWiningAndTie(board , player , nextPlayer);
+        assertEquals('X',winner);
+
 
     }
 }
