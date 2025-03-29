@@ -27,27 +27,9 @@ public class Game {
      public static  int  currentPlayerIdx = number.nextInt(2);
      private static  String currentPlayer = players[currentPlayerIdx].split("_")[1];
      public static void main(String[] args){
+         // Start the game
+         initState();
 
-
-                  int gameTimer = 10;
-
-
-                    System.out.println(currentPlayer + "CUU");
-                    Scanner scanner = new Scanner(System.in);
-                    System.out.println("Enter number of rows");
-                    printBoard(promptUser(scanner));
-                    System.out.println("THE Current player is " + currentPlayer);
-                    System.out.println();
-
-                    System.out.println("Enter your moves symbol: "  + currentPlayer + "   and index");
-                    char playerMove =  scanner.next().charAt(0);
-
-                    System.out.println();
-                    int row = scanner.nextInt();
-                    int col =scanner.nextInt();
-                   char [][] theGameBoard = promptUser(scanner);
-                   theGameBoard[row][col] = playerMove;
-         
       }
       public  char getPlayer(){
           if(this.currentPlayer.equals("X")) return  'O';
@@ -115,5 +97,24 @@ public class Game {
                   System.out.println("Its a tie");
               }
           }
+      }
+      public static    void initState(){
+          int gameTimer = 10;
+
+          System.out.println(currentPlayer + "CUU");
+          Scanner scanner = new Scanner(System.in);
+          System.out.println("Enter number of rows");
+          printBoard(promptUser(scanner));
+          System.out.println("THE Current player is " + currentPlayer);
+          System.out.println();
+
+          System.out.println("Enter your moves symbol: "  + currentPlayer + "   and index");
+          char playerMove =  scanner.next().charAt(0);
+
+          System.out.println();
+          int row = scanner.nextInt();
+          int col =scanner.nextInt();
+          char [][] theGameBoard = promptUser(scanner);
+          theGameBoard[row][col] = playerMove;
       }
     }

@@ -59,7 +59,7 @@ public class TestGame  {
 
                 {'X','O','X'},
                 {'O','X','O'},
-                {' ','O','X'}
+                {'X','O','X'}
         };
         game.setBoard(board);
 
