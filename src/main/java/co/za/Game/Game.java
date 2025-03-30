@@ -36,13 +36,11 @@ public class Game {
      public static void main(String[] args){
          // Start the game
          initState();
-
       }
       public  char getPlayer(){
           if(this.currentPlayer.equals("X")) return  'O';
           return  'X';
       }
-    
         public static   void printBoard(char[][] board){
             setBoard(board);
         }
@@ -69,17 +67,12 @@ public class Game {
            if(colWinner != EMPTY_CELL){
                return  colWinner;
            }
-
             // Diagonals
             char diagonalWinner = checkDiagonal(board , player , nextPlayer);
            if(diagonalWinner != EMPTY_CELL){
                return  diagonalWinner;
-
            }
-
             return  player;
-
-
         }
         static  char[][] promptUser(Scanner scanner){
         int num_rows = scanner.nextInt();
@@ -95,45 +88,33 @@ public class Game {
 
       public  static char   checkDiagonal(char [][] board , char player ,char nextPlayer){
          // bottom right diagonal
-          if(board[0][0] != ' ' && board[0][0] ==  board[1][1] && board[2][2] == player) {
+          if(board[0][0] != EMPTY_CELL  && board[0][0] ==  board[1][1] && board[2][2] == player) {
               System.out.println("The winner is \n " + player);
               return  player;
-
-
           }
           //  top-right to bottom-left diagonal
           if(board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0]){
               System.out.println("The winner is"+ player);
               return  player;
-
-
           }
-          return  ' ';
+          return  EMPTY_CELL;
       }
       public  static  char  checkCols(char [][] board , char player ,char nextPlayer){
           for(int col = 0 ; col < board[0].length ; col ++){
               if(board[0][col] == player && board[1][col] == player && board[2][col] == player){
                   System.out.println("The winner is \n " + player);
                   return  player;
-
-
-
-
-
               }else if(board[0][col] == player && board[1][col] == nextPlayer && board[2][col] == player){
                   System.out.println("Its a tie");
                   return  player;
               }
           }
-          return  ' ';
-
-
+          return  EMPTY_CELL;
       }
       public static    void initState(){
           Scanner scanner = new Scanner(System.in);
           int numberOfRows = scanner.nextInt();
           char [][] theGameBoard = new char[numberOfRows][numberOfRows];
-
 
         boolean isGameOver = false;
         int moves = 0;
