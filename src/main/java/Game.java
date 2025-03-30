@@ -22,10 +22,15 @@ import java.util.Scanner;
     End the game if all squares are taken.
   */
 public class Game {
-    public static Random number = new Random();
-    private  static    String[] players = {"Player_X","Player_O"};
-     public static  int  currentPlayerIdx = number.nextInt(2);
+    private static  final  int BOARD_SIZE= 3;
+    private  static  final  char EMPTY_CELL = ' ';
+
+    private static Random number = new Random();
+    private  static  String[] players = {"Player_X","Player_O"};
+     private static  int  currentPlayerIdx = number.nextInt(2);
      private static  String currentPlayer = players[currentPlayerIdx].split("_")[1];
+
+     // main void
      public static void main(String[] args){
          // Start the game
          initState();
@@ -34,17 +39,17 @@ public class Game {
       public  char getPlayer(){
           if(this.currentPlayer.equals("X")) return  'O';
           return  'X';
-
-
       }
     
         public static   void printBoard(char[][] board){
             setBoard(board);
         }
-        public  static  void setBoard(char[][] board){
-            for(int i = 0 ; i < board.length ; i ++){
-                System.out.println(" " + board[i][0] + "|" + board[i][1] + "|" + board[i][2] );
-                if(i < 2) System.out.println("----+---+---");
+        public    static  void setBoard(char[][] board){
+
+         // check for rows
+         for(int row = 0 ; row < board.length ; row ++){
+                System.out.println(" " + board[row][0] + "|" + board[row][1] + "|" + board[row][2] );
+                if(row < 2) System.out.println("----+---+---");
             }
 
         }
@@ -58,9 +63,17 @@ public class Game {
                 }
             }
             // Cols
-            checkCols(board , player , nextPlayer);
+            char colWinner =  checkCols(board , player , nextPlayer);
+           if(colWinner != ' '){
+               return  colWinner;
+           }
+
             // Diagonals
-            checkDiagonal(board , player , nextPlayer);
+            char diagonalWinner = checkDiagonal(board , player , nextPlayer);
+           if(diagonalWinner != ' '){
+               return  diagonalWinner;
+
+           }
 
             return  player;
 
@@ -78,28 +91,41 @@ public class Game {
 
         }
 
-      public  static void  checkDiagonal(char [][] board , char player ,char nextPlayer){
+      public  static char   checkDiagonal(char [][] board , char player ,char nextPlayer){
          // bottom right diagonal
           if(board[0][0] != ' ' && board[0][0] ==  board[1][1] && board[2][2] == player) {
               System.out.println("The winner is \n " + player);
+              return  player;
+
 
           }
           //  top-right to bottom-left diagonal
           if(board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0]){
               System.out.println("The winner is"+ player);
+              return  player;
+
 
           }
+          return  ' ';
       }
-      public  static  void checkCols(char [][] board , char player ,char nextPlayer){
+      public  static  char  checkCols(char [][] board , char player ,char nextPlayer){
           for(int col = 0 ; col < board[0].length ; col ++){
               if(board[0][col] == player && board[1][col] == player && board[2][col] == player){
                   System.out.println("The winner is \n " + player);
+                  return  player;
+
+
+
 
 
               }else if(board[0][col] == player && board[1][col] == nextPlayer && board[2][col] == player){
                   System.out.println("Its a tie");
+                  return  player;
               }
           }
+          return  ' ';
+
+
       }
       public static    void initState(){
           int gameTimer = 10;
