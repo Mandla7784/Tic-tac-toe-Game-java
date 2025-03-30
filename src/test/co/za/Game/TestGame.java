@@ -1,12 +1,10 @@
-package  co.za.Game;
-
+package co.za.Game;
 import org.junit.Test;
-//import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 
 public class TestGame  {
-    private static    Game game = new Game();
+    private static Game game = new Game();
     public static char nextPlayer;
     public    char player = game.getPlayer();
 
@@ -78,10 +76,10 @@ public class TestGame  {
     }
     @Test
     public  void testDiagonalO(){
-          char [][] board = {
-                  {'O','X','O'},
-                  {'X','O','X'},
-                  {'O','O','O'}
-          };
+        char [][] board = {
+                {'O','X','O'},
+                {'X','O','X'},
+                {'O','O','O'}
+        };
     }
 }
