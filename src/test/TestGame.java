@@ -75,4 +75,7 @@ public class TestGame  {
 
 
     }
+    public  void testDiagonalO(){
+
+    }
 }

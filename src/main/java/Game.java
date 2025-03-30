@@ -79,13 +79,16 @@ public class Game {
         }
 
       public  static void  checkDiagonal(char [][] board , char player ,char nextPlayer){
-          if(board[0][0] == player && board[1][1] == player && board[2][2] == player){
+         // bottom right diagonal
+          if(board[0][0] != ' ' && board[0][0] ==  board[1][1] && board[2][2] == player) {
               System.out.println("The winner is \n " + player);
 
-          }else if (board[0][0] == player && board[1][1] == nextPlayer && board[2][2] == player){
-              System.out.println("Its a tie");
           }
+          //  top-right to bottom-left diagonal
+          if(board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0]){
+              System.out.println("The winner is"+ player);
 
+          }
       }
       public  static  void checkCols(char [][] board , char player ,char nextPlayer){
           for(int col = 0 ; col < board[0].length ; col ++){
