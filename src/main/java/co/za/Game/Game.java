@@ -49,7 +49,7 @@ public class Game {
         public    static  void setBoard(char[][] board){
 
          // check for rows
-         for(int row = 0 ; row < board.length ; row ++){
+         for(int row = 0 ; row < BOARD_SIZE ; row ++){
                 System.out.println(" " + board[row][0] + "|" + board[row][1] + "|" + board[row][2] );
                 if(row < 2) System.out.println("----+---+---");
             }
@@ -66,13 +66,13 @@ public class Game {
             }
             // Cols
             char colWinner =  checkCols(board , player , nextPlayer);
-           if(colWinner != ' '){
+           if(colWinner != EMPTY_CELL){
                return  colWinner;
            }
 
             // Diagonals
             char diagonalWinner = checkDiagonal(board , player , nextPlayer);
-           if(diagonalWinner != ' '){
+           if(diagonalWinner != EMPTY_CELL){
                return  diagonalWinner;
 
            }
@@ -86,7 +86,7 @@ public class Game {
         char[][]  gameBoard = new char[num_rows][num_rows];
         for(int i = 0 ; i < num_rows ; i ++){
             for(int j  = 0 ; j < num_rows; j ++){
-                gameBoard[i][j] = ' ';
+                gameBoard[i][j] = EMPTY_CELL;
             }
         }
         return gameBoard;
@@ -155,7 +155,7 @@ public class Game {
                moves ++;
 
                char winner = chekForWiningAndTie(theGameBoard , playerMove , (playerMove  == 'X' ? 'O':'X') );
-                if(winner != ' '){
+                if(winner != EMPTY_CELL){
                     isGameOver = true;
 
                     System.out.println("The winner is" + winner);
