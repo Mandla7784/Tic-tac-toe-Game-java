@@ -128,22 +128,29 @@ public class Game {
 
       }
       public static    void initState(){
-          int gameTimer = 10;
-
-          System.out.println(currentPlayer + "CUU");
           Scanner scanner = new Scanner(System.in);
-          System.out.println("Enter number of rows");
+          int numberOfRows = scanner.nextInt();
+          char [][] theGameBoard = new char[numberOfRows][numberOfRows];
+
+
+        boolean isGameOver = false;
+           while (isGameOver){
+               System.out.println("The Current Player is" + currentPlayer);
+               System.out.println("Enter your moves symbol: "  + currentPlayer + "   and index");
+               char playerMove =  scanner.next().charAt(0);
+               int row = scanner.nextInt();
+               int col = scanner.nextInt();
+
+
+               if(row < 0 || row >= numberOfRows || col < 0 || col >= numberOfRows ||theGameBoard[row][col] != ' ' ){
+                   System.out.println("Invalid move Try again....!");
+                   continue;
+               }
+
+           }
+
           printBoard(promptUser(scanner));
-          System.out.println("THE Current player is " + currentPlayer);
-          System.out.println();
 
-          System.out.println("Enter your moves symbol: "  + currentPlayer + "   and index");
-          char playerMove =  scanner.next().charAt(0);
 
-          System.out.println();
-          int row = scanner.nextInt();
-          int col =scanner.nextInt();
-          char [][] theGameBoard = promptUser(scanner);
-          theGameBoard[row][col] = playerMove;
       }
     }
