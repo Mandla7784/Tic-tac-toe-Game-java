@@ -53,7 +53,7 @@ public class Game {
             }
 
         }
-        public    char  chekForWiningAndTie(char[][] board , char player , char nextPlayer){
+        public  static   char  chekForWiningAndTie(char[][] board , char player , char nextPlayer){
             for(int row = 0 ;  row < board.length ; row ++){
                 if(board[row][0] == player && board[row][1] == player && board[row][2] == player){
                     System.out.println("The winner is \n " + player);
@@ -134,6 +134,8 @@ public class Game {
 
 
         boolean isGameOver = false;
+        int moves = 0;
+
            while (isGameOver){
                System.out.println("The Current Player is" + currentPlayer);
                System.out.println("Enter your moves symbol: "  + currentPlayer + "   and index");
@@ -146,10 +148,25 @@ public class Game {
                    System.out.println("Invalid move Try again....!");
                    continue;
                }
+               theGameBoard[row][col] = playerMove;
+               printBoard(promptUser(scanner));
+               moves ++;
+
+               char winner = chekForWiningAndTie(theGameBoard , playerMove , (playerMove  == 'X' ? 'O':'X') );
+                if(winner != ' '){
+                    isGameOver = true;
+
+                    System.out.println("The winner is" + winner);
+                }else  if(moves == numberOfRows * numberOfRows){
+                    isGameOver = true;
+
+                    System.out.println("Its a tie");
+                }
+
 
            }
 
-          printBoard(promptUser(scanner));
+
 
 
       }
