@@ -75,7 +75,12 @@ public class TestGame  {
 
 
     }
+    @Test
     public  void testDiagonalO(){
-
+          char [][] board = {
+                  {'O','X','O'},
+                  {'X','O','X'},
+                  {'O','O','O'}
+          };
     }
 }
