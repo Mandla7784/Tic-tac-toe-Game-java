@@ -1,6 +1,5 @@
 package  co.za.Game;
 
-
 import java.util.Random;
 import java.util.Scanner;
 
@@ -83,7 +82,6 @@ public class Game {
             }
         }
         return gameBoard;
-
         }
 
       public  static char   checkDiagonal(char [][] board , char player ,char nextPlayer){
@@ -93,7 +91,7 @@ public class Game {
               return  player;
           }
           //  top-right to bottom-left diagonal
-          if(board[0][2] != ' ' && board[0][2] == board[1][1] && board[1][1] == board[2][0]){
+          if(board[0][2] != EMPTY_CELL && board[0][2] == board[1][1] && board[1][1] == board[2][0]){
               System.out.println("The winner is"+ player);
               return  player;
           }
@@ -126,8 +124,7 @@ public class Game {
                int row = scanner.nextInt();
                int col = scanner.nextInt();
 
-
-               if(row < 0 || row >= numberOfRows || col < 0 || col >= numberOfRows ||theGameBoard[row][col] != ' ' ){
+               if(row < 0 || row >= numberOfRows || col < 0 || col >= numberOfRows ||theGameBoard[row][col] != EMPTY_CELL ){
                    System.out.println("Invalid move Try again....!");
                    continue;
                }
@@ -148,8 +145,6 @@ public class Game {
 
 
            }
-
-
 
 
       }
