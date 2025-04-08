@@ -52,6 +52,14 @@ public class Game {
             }
 
         }
+
+     /**
+      * This is a method to check winning or tie...
+      * @param board
+      * @param player
+      * @param nextPlayer
+      * @return
+      */
         public  static   char  chekForWiningAndTie(char[][] board , char player , char nextPlayer){
             for(int row = 0 ;  row < board.length ; row ++){
                 if(board[row][0] == player && board[row][1] == player && board[row][2] == player){
